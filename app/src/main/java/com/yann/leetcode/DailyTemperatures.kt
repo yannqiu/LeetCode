@@ -21,15 +21,15 @@ class DailyTemperatures {
                 return@forEachIndexed
             }
             while (stack.isNotEmpty()) {
-                val top = stack.peek()
+                val top = stack.pop()
                 if (top.number < i) {
                     results[top.index] = index - top.index
-                    stack.pop()
                     if (stack.isEmpty()) {
                         stack.push(NumberWithIndex(i, index))
                         return@forEachIndexed
                     }
                 } else {
+                    stack.push(top)
                     stack.push(NumberWithIndex(i, index))
                     return@forEachIndexed
                 }

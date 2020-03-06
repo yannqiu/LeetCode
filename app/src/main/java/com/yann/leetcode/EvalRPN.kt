@@ -28,7 +28,7 @@ class EvalRPN {
                 stack.push(it)
             }
         }
-        return stack.peek().toInt()
+        return stack.pop().toInt()
 
     }
 

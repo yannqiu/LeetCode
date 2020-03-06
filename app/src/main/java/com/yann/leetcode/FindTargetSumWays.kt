@@ -27,18 +27,35 @@ import java.util.*
  */
 class FindTargetSumWays {
     private val stack = ArrayDeque<ResultWithIndex>()
+    private val queue = ArrayDeque<ResultWithIndex>()
 
     fun findTargetSumWays(nums: IntArray, S: Int): Int {
         stack.push(ResultWithIndex(0, -1))
         var count = 0
         while (stack.isNotEmpty()) {
             val top = stack.pop()
-            if (top.index == nums.size -1 && S == top.result) {
+            if (top.index == nums.size - 1 && S == top.result) {
                 count++
                 continue
             }
             getNeighbor(top, nums)?.forEach {
                 stack.push(it)
+            }
+        }
+        return count
+    }
+
+    fun findTargetSumWaysBFS(nums: IntArray, S: Int): Int {
+        queue.offer(ResultWithIndex(0, -1))
+        var count = 0
+        while (queue.isNotEmpty()) {
+            val top = queue.poll()
+            if (top.index == nums.size - 1 && S == top.result) {
+                count++
+                continue
+            }
+            getNeighbor(top, nums)?.forEach {
+                queue.offer(it)
             }
         }
         return count

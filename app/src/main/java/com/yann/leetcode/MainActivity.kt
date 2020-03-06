@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = FindTargetSumWays().findTargetSumWays(intArrayOf(1,1,1,1,1), 3)
+        val result = FindTargetSumWays().findTargetSumWaysBFS(intArrayOf(1,1,1,1,1), 3)
         Log.d("Result", "Result is $result")
     }
 }

@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = FloodFill().floodFill(arrayOf(intArrayOf(0,0,0), intArrayOf(1,0,0)), 1, 0, 2)
+        val result = PlusOne().plusOne(intArrayOf(1,2,3))
         Log.d("Result", "Result is $result")
 
         val myQueue = MyQueue()

@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = PlusOne().plusOne(intArrayOf(1,2,3))
+        val result = StrStr().strStr("mississippi", "issip")
         Log.d("Result", "Result is $result")
 
         val myQueue = MyQueue()

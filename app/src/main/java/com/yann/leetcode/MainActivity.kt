@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = ReverseString().reverseString(charArrayOf('h','e','l','l','o'))
+        val result = ArrayPairSum().arrayPairSum(intArrayOf(1,4,3,2))
         Log.d("Result", "Result is $result")
 
         val myQueue = MyQueue()

@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = ArrayPairSum().arrayPairSum(intArrayOf(1,4,3,2))
+        val result = TwoSum().twoSum(intArrayOf(2, 7, 11, 5), 9)
         Log.d("Result", "Result is $result")
 
         val myQueue = MyQueue()

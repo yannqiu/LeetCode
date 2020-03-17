@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = MinSubArrayLen().minSubArrayLen(213, intArrayOf(12,28,83,4,25,26,25,2,25,25,25,12))
+        val result = MinSubArrayLen().minSubArrayLen(7, intArrayOf(2,3,1,2,4,3))
         Log.d("Result", "Result is $result")
 
         val myQueue = MyQueue()

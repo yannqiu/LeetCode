@@ -19,15 +19,36 @@ import kotlin.collections.HashSet
  *
  */
 class MinSubArrayLen {
-    val queue = ArrayDeque()
-    val set = HashSet<>
     fun minSubArrayLen(s: Int, nums: IntArray): Int {
-        var count = 0
-        var result = 0
-        nums.forEach {
-
+        if (nums.isEmpty()) {
+            return 0
         }
+        var left = 0
+        var right = 0
+        var currentSize = 1
+        var currentSum = nums[0]
+        var minSize = 0
+        while (left <= right) {
+            if (currentSum >= s) {
+                if (minSize == 0 || minSize > currentSize) {
+                    minSize = currentSize
+                }
+                currentSum -= nums[left]
+                left++
+                if (right > nums.size - 1 || left > nums.size - 1) {
+                    break
+                }
+                currentSize--
+            } else {
+                right++
+                if (right > nums.size - 1 || left > nums.size - 1) {
+                    break
+                }
+                currentSum += nums[right]
+                currentSize++
+            }
+        }
+        return minSize
     }
 
-    private class Sum(result: Int, index: Int)
 }

@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = Rotate().rotate3(intArrayOf(2,3,1,2,4,3), 3)
+        val result = GetRow().getRow(33)
         Log.d("Result", "Result is $result")
 
         val myQueue = MyQueue()

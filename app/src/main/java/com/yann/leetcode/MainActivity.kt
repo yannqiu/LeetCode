@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = ReverseWords().reverseWords("  hello world!  ")
+        val result = ReverseEveryWords().reverseWords("Let's take LeetCode contest")
         Log.d("Result", "Result is $result")
 
         val myQueue = MyQueue()

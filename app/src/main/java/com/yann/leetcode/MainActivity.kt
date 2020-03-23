@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = RemoveDuplicates().removeDuplicates(intArrayOf(0,0,1,1,1,2,2,3,3,4))
+        val result = MoveZeroes().moveZeroes(intArrayOf(0,1,0,3,12))
         Log.d("Result", "Result is $result")
 
         val myQueue = MyQueue()

@@ -33,10 +33,12 @@ class LongestPalindrome {
     fun maxLength(s: String, left: Int, right: Int): IntArray {
         var leftIndex = left
         var rightIndex = right
-        while (s[left] == s[right] && left >= 0 && right < s.length) {
+        var result = intArrayOf(0, 0)
+        while (leftIndex >= 0 && rightIndex < s.length && s[leftIndex] == s[rightIndex]) {
+            result = intArrayOf(leftIndex, rightIndex)
             leftIndex--
             rightIndex++
         }
-        return intArrayOf(leftIndex, rightIndex)
+        return result
     }
 }

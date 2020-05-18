@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = MlcLongestPalindrome().longestPalindrome("ccc")
+        val result = Solution().isHappy(19)
         Log.d("Result", "Result is $result")
     }
 }

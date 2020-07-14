@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = Solution().isHappy(19)
+        val result = GroupAnagrams().groupAnagrams(arrayListOf("eat","tea","tan","ate","nat","bat"))
         Log.d("Result", "Result is $result")
     }
 }

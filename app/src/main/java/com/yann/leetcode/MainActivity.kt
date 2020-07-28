@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = TopKFrequent().topKFrequent(intArrayOf(1,1,1,2,2,3), 2)
+        val result = BinarySearch().search(intArrayOf(-1,0,3,5,9,12), 9)
         Log.d("Result", "Result is $result")
     }
 }

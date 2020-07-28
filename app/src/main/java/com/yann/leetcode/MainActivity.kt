@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val result = BinarySearch().search(intArrayOf(-1,0,3,5,9,12), 9)
+        val result = MySqrt().mySqrt(2147395599)
         Log.d("Result", "Result is $result")
     }
 }

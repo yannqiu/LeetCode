@@ -59,5 +59,24 @@ class TreeInOrderTraversal {
         }
     }
 
+    /**
+     * 迭代算法(不引入多余的对象)
+     */
+    fun displayNumber(result: ArrayList<Int>, currentNode: TreeNode) {
+        val stackNode = ArrayDeque<NodeEntity>()
+        var temp: TreeNode? = currentNode
+        while (stackNode.isNotEmpty() || temp != null) {
+            while (temp != null) {
+                stackNode.push(temp)
+                temp = temp.left
+            }
+            val top = stackNode.pop()
+            result.add(top.`val`)
+            if (top.right != null) {
+                temp = top.right
+            }
+        }
+    }
+
     class NodeEntity(val treeNode: TreeNode, val hasEnter: Boolean)
 }

@@ -46,10 +46,10 @@ class TreePreOrderTraversal {
             val top = stackNode.pop()
             result.add(top.`val`)
             top.right?.let{
-                stackNode.add(it)
+                stackNode.push(it)
             }
             top.left?.let{
-                stackNode.add(it)
+                stackNode.push(it)
             }
         }
     }

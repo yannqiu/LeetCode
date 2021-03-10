@@ -60,5 +60,39 @@ class TreePostOrderTraversal {
          }
     }
 
+    /**
+     * 迭代算法
+     * (不引入多余的对象)
+     */
+    fun displayNumber(result: ArrayList<Int>, currentNode: TreeNode) {
+        val stackNode = ArrayDeque<TreeNode>()
+        val outNode = ArrayDeque<TreeNode>()
+        stackNode.push(currentNode)
+        while (stackNode.isNotEmpty()) {
+            val top = stackNode.pop()
+            outNode.push(top)
+            top.left?.let{
+                stackNode.push(it)
+            }
+            top.right?.let{
+                stackNode.push(it)
+            }
+        }
+        while (outNode.isNotEmpty()) {
+            result.add(outNode.pop().`val`)
+        }
+    }
+
+    /**
+     * 迭代算法
+     * (不引入多余的对象)
+     */
+    fun displayNumber(result: ArrayList<Int>, currentNode: TreeNode) {
+        val stackNode = ArrayDeque<TreeNode>()
+        stackNode.push(currentNode)
+
+    }
+
+
     class NodeEntity(val treeNode: TreeNode, val hasEnter: Boolean)
 }

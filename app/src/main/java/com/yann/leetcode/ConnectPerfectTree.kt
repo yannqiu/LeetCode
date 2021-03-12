@@ -68,21 +68,21 @@ class ConnectPerfectTree {
         if (root == null) {
             return null
         }
-        var leftMost = root
-        while (leftMost.left != null) {
-            leftMost.left.next = leftMost.right
-            var leftNext = leftMost.next
+        var leftMost: Node? = root
+        while (leftMost?.left != null) {
+            leftMost!!.left!!.next = leftMost!!.right
+            var leftNext: Node? = leftMost.next
             if (leftNext != null) {
-                leftMost.right.next = leftNext.left
+                leftMost!!.right!!.next = leftNext.left
             }
             while (leftNext != null) {
-                leftNext.left.next = leftNext.right
-                if (leftNext.next != null) {
-                    leftNext.right.next = leftNext.next.left
+                leftNext!!.left!!.next = leftNext!!.right
+                if (leftNext!!.next != null) {
+                    leftNext!!.right!!.next = leftNext!!.next!!.left
                 }
                 leftNext = leftNext.next
             }
-            leftMost = leftMost.left
+            leftMost = leftMost!!.left
         }
         return root
     }

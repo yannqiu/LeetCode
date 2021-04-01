@@ -23,12 +23,19 @@ class ConnectTree {
         }
         var leftMostThisLine: Node? = root
         while (leftMostThisLine != null) {
-
-
             getTwoUnNextNode(leftMostThisLine).let {
-
+                var first = it.first
+                var second = it.second
+                var currentParent = it.third
+                while (first != null && second != null) {
+                    first.next = second
+                    getTwoUnNextNode(currentParent).let {
+                        first = it.first
+                        second = it.second
+                        currentParent = it.third
+                    }
+                }
             }
-
             leftMostThisLine = getNextMostLeftNode(leftMostThisLine)
         }
         return root
@@ -41,20 +48,20 @@ class ConnectTree {
         while (currentParent != null) {
             val left = currentParent.left
             val right = currentParent.right
-            if (left != null && left.next != null) {
-                if (firstNode != null) {
+            if (left != null && left.next == null) {
+                if (firstNode == null) {
                     firstNode = left
-                } else if (secondNode == null) {
+                } else if (secondNode == null && secondNode != firstNode) {
                     secondNode = left
                 }
             }
             if (firstNode != null && secondNode != null) {
                 return Triple(firstNode, secondNode, currentParent)
             }
-            if (right != null && right.next != null) {
+            if (right != null && right.next == null) {
                 if (firstNode == null) {
                     firstNode = right
-                } else if (secondNode == null) {
+                } else if (secondNode == null && secondNode != firstNode) {
                     secondNode = right
                 }
             }
@@ -66,15 +73,12 @@ class ConnectTree {
         return Triple(firstNode, secondNode, currentParent)
     }
 
-    fun getNodeMoreLeft(node: Node?): Node? {
+    fun getNodeMoreLeft(node: Node): Node? {
         return node.left ?: node.right
     }
 
 
-    fun getNextMostLeftNode(node: Node?): Node? {
-        if (node == null) {
-            return null
-        }
+    fun getNextMostLeftNode(node: Node): Node? {
         var temp = getNodeMoreLeft(node)
         while (temp != null) {
             if (getNodeMoreLeft(temp) != null) {

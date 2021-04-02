@@ -47,4 +47,32 @@ class GetRow {
         }
         return result.toInt()
     }
+
+    /**
+     * 递归解法 注意的是rowIndex是从0开始的
+     */
+    fun getRow(rowIndex: Int): List<Int> {
+        return generate(0, rowIndex, arrayListOf(1))
+    }
+
+    fun generate(currentRow: Int, rowIndex: Int, lastLine: List<Int>): List<Int> {
+        if (currentRow > rowIndex) {
+            return lastLine
+        }
+        if (currentRow == 0) {
+            return generate(currentRow + 1, rowIndex, lastLine)
+        }
+        if (currentRow == 1) {
+            return generate(currentRow + 1, rowIndex, arrayListOf(1, 1))
+        }
+        val resultLine = arrayListOf<Int>()
+        if (currentRow > 1) {
+            resultLine.add(1)
+            for (i in 0..lastLine.size - 2) {
+                resultLine.add(lastLine[i] + lastLine[i + 1])
+            }
+            resultLine.add(1)
+        }
+        return generate(currentRow + 1, rowIndex, resultLine)
+    }
 }

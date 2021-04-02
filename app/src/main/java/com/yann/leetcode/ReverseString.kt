@@ -32,4 +32,21 @@ class ReverseString {
         }
         print(s)
     }
+
+    /**
+     * 递归解决
+     */
+    fun reverseString(s: CharArray): Unit {
+        helper(0, s)
+    }
+
+    fun helper(index: Int, s: CharArray) {
+        if (index >= s.size / 2) {
+            return
+        }
+        val temp = s[index]
+        s[index] = s[s.size - index - 1]
+        s[s.size - index - 1] = temp
+        helper(index + 1, s)
+    }
 }

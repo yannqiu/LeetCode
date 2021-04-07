@@ -1,5 +1,7 @@
 package com.yann.leetcode
 
+import java.util.*
+
 /**
  * 二叉树的最大深度
 给定一个二叉树，找出其最大深度。
@@ -45,6 +47,30 @@ class MaxDepth {
         }
         if (maxDepth < rightDepth) {
             maxDepth = rightDepth
+        }
+        return maxDepth
+    }
+
+    /**
+     * 广度优先
+     */
+    fun maxDepth(root: TreeNode?): Int {
+        val queue = ArrayDeque<TreeNode>()
+        var maxDepth = 0
+        root?.let {
+            queue.offer(root)
+        }
+        while (queue.isNotEmpty()) {
+            maxDepth++
+            for (i in 0 until queue.size) {
+                val top = queue.poll()
+                top.left?.let {
+                    queue.offer(it)
+                }
+                top.right?.let {
+                    queue.offer(it)
+                }
+            }
         }
         return maxDepth
     }

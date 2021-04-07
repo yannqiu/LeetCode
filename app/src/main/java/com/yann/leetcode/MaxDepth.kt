@@ -1,6 +1,7 @@
 package com.yann.leetcode
 
 import java.util.*
+import kotlin.math.max
 
 /**
  * 二叉树的最大深度
@@ -36,10 +37,10 @@ class MaxDepth {
     fun calculateDepth(root: TreeNode, currentDepth: Int): Int {
         var maxDepth = currentDepth
         maxDepth++
-        val leftDepth = root.left?.let{
+        val leftDepth = root.left?.let {
             calculateDepth(it, maxDepth)
         } ?: maxDepth
-        val rightDepth = root.right?.let{
+        val rightDepth = root.right?.let {
             calculateDepth(it, maxDepth)
         } ?: maxDepth
         if (maxDepth < leftDepth) {
@@ -73,5 +74,17 @@ class MaxDepth {
             }
         }
         return maxDepth
+    }
+
+    /**
+     * 深底优先的递归
+     */
+    fun maxDepth(root: TreeNode?): Int {
+        if (root == null) {
+            return 0
+        }
+        val leftDepth = maxDepth(root.left)
+        val rightDepth = maxDepth(root.right)
+        return max(leftDepth, rightDepth) + 1
     }
 }

@@ -22,4 +22,17 @@ class ReverseList {
         return pre
     }
 
+    /**
+     * 递归方法
+     */
+    fun reverseList(head: ListNode?): ListNode? {
+        if (head?.next == null) {
+            return head
+        }
+        val last = reverseList(head.next)
+        head?.next?.next = head
+        head?.next = null
+        return last
+    }
+
 }

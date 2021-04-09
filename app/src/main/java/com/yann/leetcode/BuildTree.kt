@@ -43,4 +43,28 @@ class BuildTree {
         rootNode.right = buildTree(rootIndexInOrder + 1, inorderEnd, postorderStart + rootIndexInOrder - inorderStart, postorderEnd - 1)
         return rootNode
     }
+
+    private val hashMapInInorderIndex = hashMapOf<Int, Int>()
+    private lateinit var postorder: IntArray
+    fun buildTree(inorder: IntArray, postorder: IntArray): TreeNode? {
+        this.postorder = postorder
+        inorder.forEachIndexed { index, i ->
+            hashMapInInorderIndex[i] = index
+        }
+        return buildTree(0, inorder.size - 1, 0, postorder.size - 1)
+    }
+
+    fun buildTree(inorderStart: Int, inorderEnd: Int, postOrderStart: Int, postOrderEnd: Int): TreeNode? {
+        if (inorderStart > inorderEnd || postOrderStart > postOrderEnd) {
+            return null
+        }
+        val head = postorder[postOrderEnd]
+        val headInOrderIndex = hashMapInInorderIndex[head]!!
+        val left = buildTree(inorderStart, headInOrderIndex - 1, postOrderStart, postOrderStart + (headInOrderIndex - inorderStart) - 1)
+        val right = buildTree(headInOrderIndex + 1, inorderEnd, postOrderStart + (headInOrderIndex - inorderStart), postOrderEnd - 1)
+        return TreeNode(head).apply{
+            this.left = left
+            this.right = right
+        }
+    }
 }

@@ -104,5 +104,4 @@ class ConnectPerfectTree {
         connect(node2?.left, node2?.right)
         connect(node1?.right, node2?.left)
     }
-
 }

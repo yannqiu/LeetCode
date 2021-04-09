@@ -42,4 +42,34 @@ class BuildTreePreAndInOrder {
         treeNode.right = buildTree(preorderStart + rootIndexInOrder - inorderStart + 1, preorderEnd, rootIndexInOrder + 1, inorderEnd)
         return treeNode
     }
+
+
+    /**
+     * 两种方式，都是使用递归
+     */
+    private val hashMapIndexInOrder = hashMapOf<Int, Int>()
+    fun buildTree(preorder: IntArray, inorder: IntArray): TreeNode? {
+        inorder.forEachIndexed { index, i ->
+            hashMapIndexInOrder.put(i, index)
+        }
+        return buildTree(0, inorder.size -1, inorder, 0, preorder)
+    }
+
+    fun buildTree(leftInOrder: Int, rightInOrder: Int, inorder: IntArray, headIndexInPreOrder: Int, preorder: IntArray): TreeNode? {
+        if (leftInOrder == rightInOrder) {
+            return TreeNode(inorder[leftInOrder])
+        }
+        if(leftInOrder > rightInOrder) {
+            return null
+        }
+        val head = preorder[headIndexInPreOrder]
+
+        val headInOrder = hashMapIndexInOrder[head]!!
+        val left = buildTree(leftInOrder, headInOrder - 1,inorder, headIndexInPreOrder + 1, preorder)
+        val right = buildTree(headInOrder + 1, rightInOrder,inorder, headIndexInPreOrder + headInOrder - leftInOrder + 1, preorder)
+        return TreeNode(head).apply {
+            this.left = left
+            this.right = right
+        }
+    }
 }

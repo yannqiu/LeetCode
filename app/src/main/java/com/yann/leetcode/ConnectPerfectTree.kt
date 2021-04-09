@@ -86,4 +86,23 @@ class ConnectPerfectTree {
         }
         return root
     }
+
+    /**
+     * 递归解法
+     */
+    fun connect(root: Node?): Node? {
+        connect(root?.left, root?.right)
+        return root
+    }
+
+    fun connect(node1: Node?, node2: Node?) {
+        if (node1 == null || node2 == null) {
+            return
+        }
+        node1.next = node2
+        connect(node1?.left, node1?.right)
+        connect(node2?.left, node2?.right)
+        connect(node1?.right, node2?.left)
+    }
+
 }

@@ -42,4 +42,21 @@ class BinarySearch {
             return binarySearch(begin, middle - 1, nums, target)
         }
     }
+
+
+    fun search(nums: IntArray, target: Int): Int {
+        var left = 0
+        var right = nums.size - 1
+        while (left <= right) {
+            val midIndex = (left + right) / 2
+            if (nums[midIndex] ==  target) {
+                return midIndex
+            } else if (nums[midIndex] < target) {
+                left = midIndex + 1
+            } else if (nums[midIndex] > target) {
+                right = midIndex - 1
+            }
+        }
+        return -1
+    }
 }

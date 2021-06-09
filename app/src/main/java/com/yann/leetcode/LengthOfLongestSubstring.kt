@@ -51,4 +51,29 @@ class LengthOfLongestSubstring {
         }
         return maxLength
     }
+
+    fun lengthOfLongestSubstring(s: String): Int {
+        var right = 0
+        var left = 0
+        val windows = hashMapOf<Char, Int>()
+        var maxLength = 0
+        while (right < s.length) {
+            val temp = s[right]
+            windows[temp] = windows.getOrDefault(temp, 0) + 1
+            right++
+            while (windows.getOrDefault(temp, 0) > 1) {
+                val leftTemp = s[left]
+                left++
+                if (windows.getOrDefault(leftTemp, 0) > 0) {
+                    windows[leftTemp] = windows[leftTemp]!! - 1
+                }
+            }
+            maxLength = if (right - left > maxLength) {
+                right - left
+            } else {
+                maxLength
+            }
+        }
+        return maxLength
+    }
 }

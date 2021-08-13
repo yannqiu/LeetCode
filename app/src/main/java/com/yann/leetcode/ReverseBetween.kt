@@ -23,6 +23,18 @@ class ReverseBetween {
         return head
     }
 
+    fun reverseBetween(head: ListNode?, left: Int, right: Int): ListNode? {
+        if (left == 1) {
+            return reverseN(head, right)
+        }
+        var reverseHead = head
+        for (i in 0 .. left - 2) {
+            reverseHead = reverseHead.next
+        }
+        reverseHead.next = reverseN(reverseHead.next, right - left + 1)
+        return head
+    }
+
     /**
      * 反转前N个元素
      */

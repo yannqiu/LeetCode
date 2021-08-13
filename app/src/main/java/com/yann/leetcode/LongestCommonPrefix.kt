@@ -67,4 +67,45 @@ class LongestCommonPrefix {
         }
         return ""
     }
+
+    fun longestCommonPrefix(strs: Array<String>): String {
+        if (strs.isEmpty()) {
+            return ""
+        }
+        if (strs.size == 1) {
+            return strs[0]
+        }
+        var minLength = strs[0].length
+        strs.forEach {
+            if (minLength > it.length) {
+                minLength = it.length
+            }
+        }
+        var left = 0
+        var right = minLength
+        while (left < right) {
+            val middle = left + (right - left) / 2
+            if (isValid(middle, strs)) {
+                left = middle + 1
+            } else {
+                right = middle
+            }
+        }
+        return strs[0].substring(0, left)
+    }
+
+    fun isValid(end: Int, arrayString: Array<String>): Boolean {
+        var temp: String? = null
+        arrayString.forEach {
+            val currentTemp = it.substring(0, end+1)
+            if (temp == null) {
+                temp = currentTemp
+                return@forEach
+            }
+            if (currentTemp != temp) {
+                return false
+            }
+        }
+        return true
+    }
 }

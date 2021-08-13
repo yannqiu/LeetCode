@@ -10,6 +10,9 @@ class SortArray {
         return nums
     }
 
+    /**
+     * 快排序
+     */
     fun quickSort(nums: IntArray, left: Int, right: Int) {
         if(left < right) {
             val index = partPosition(nums, left, right)
@@ -43,5 +46,17 @@ class SortArray {
         val temp = nums[left]
         nums[left] = nums[right]
         nums[right] = temp
+    }
+
+    fun popSort(nums: IntArray): IntArray {
+        val size = nums.size
+        for (i in 0 until size) {
+            for (j in 0 until size - i - 1) {
+                if (nums[j] > nums[j+1]) {
+                    swap(nums, j, j+1)
+                }
+            }
+        }
+        return nums
     }
 }
